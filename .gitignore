@@ -36,4 +36,4 @@ next-env.d.ts
 
 pnpm-lock.yaml
 
-.env
+password.txt
