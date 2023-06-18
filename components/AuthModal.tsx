@@ -7,8 +7,8 @@ import {
 import { useRouter } from "next/navigation";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import useAuthModal from "@/hooks/useAuthModal";
 import { useEffect } from "react";
+import useAuthModal from "@/hooks/useAuthModal";
 
 const AuthModal = () => {
   const supabaseClient = useSupabaseClient();
