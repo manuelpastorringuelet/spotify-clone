@@ -7,6 +7,7 @@ import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 
 import LikeButton from "./LikeButton";
 import MediaItem from "./MediaItem";
+import Slider from "./Slider";
 
 interface PlayerContentProps {
   song: Song;
@@ -60,6 +61,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
             className=" cursor-pointer"
             size={34}
           />
+          <Slider />
         </div>
       </div>
     </div>
