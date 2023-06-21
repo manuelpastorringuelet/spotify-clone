@@ -8,7 +8,7 @@ interface PlayerContentProps {
 }
 
 const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
-  return <div>Player Content</div>;
+  return <div className="">Player Content</div>;
 };
 
 export default PlayerContent;
