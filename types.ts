@@ -1,4 +1,3 @@
-import { metadata } from "./app/layout";
 import Stripe from "stripe";
 
 export interface Song {
@@ -29,7 +28,7 @@ export interface Product {
   metadata?: Stripe.Metadata;
 }
 
-interface Price {
+export interface Price {
   id: string;
   product_id?: string;
   active?: boolean;
