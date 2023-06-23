@@ -24,9 +24,7 @@ const upsertProductRecord = async (product: Stripe.Product) => {
 
   const { error } = await supabaseAdmin.from("products").upsert([productData]);
 
-  if (error) {
-    throw error;
-  }
+  if (error) throw error;
 
   console.log(`Product ${product.id} upserted.`);
 };
@@ -47,9 +45,7 @@ const upsertPriceRecord = async (price: Stripe.Price) => {
 
   const { error } = await supabaseAdmin.from("prices").upsert([priceData]);
 
-  if (error) {
-    throw error;
-  }
+  if (error) throw error;
 
   console.log(`Price ${price.id} upserted.`);
 };
@@ -87,9 +83,7 @@ const createOrRetrieveCustomer = async ({
         },
       ]);
 
-    if (supabaseError) {
-      throw supabaseError;
-    }
+    if (supabaseError) throw supabaseError;
 
     console.log(`Customer ${uuid} created.`);
     return customer.id;
@@ -105,9 +99,7 @@ const copyBillingDetailsToCustomer = async (
   const customer = payment_method.customer as string;
   const { name, phone, address } = payment_method.billing_details;
 
-  if (!name || !phone || !address) {
-    return;
-  }
+  if (!name || !phone || !address) return;
 
   // @ts-ignore
   await stripe.customers.update(customer, { name, phone, address });
@@ -201,5 +193,3 @@ export {
   createOrRetrieveCustomer,
   manageSubscriptionStatusChange,
 };
-
-
