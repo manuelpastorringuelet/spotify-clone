@@ -43,6 +43,10 @@ export interface Price {
   product?: Stripe.Product;
 }
 
+export interface ProductWithPrices {
+  prices?: Price[];
+}
+
 export interface Subscription {
   id: string;
   user_id: string;
