@@ -9,7 +9,12 @@ import { toDateTime } from "./helpers";
 
 export const supabaseAdmin = createClient<Database>(
   process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-  process.env.SUPABASE_SERVICE_ROLE_KEY || ""
+  process.env.SUPABASE_SERVICE_ROLE_KEY || "",
+  {
+    auth: {
+      persistSession: false,
+    },
+  }
 );
 
 const upsertProductRecord = async (product: Stripe.Product) => {
@@ -180,6 +185,7 @@ const manageSubscriptionStatusChange = async (
   console.log(`Subscription ${subscription.id} upserted.`);
 
   if (createAction && subscription.default_payment_method && uuid) {
+    //@ts-ignore
     await copyBillingDetailsToCustomer(
       uuid,
       subscription.default_payment_method as Stripe.PaymentMethod

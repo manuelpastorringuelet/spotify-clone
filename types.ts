@@ -43,7 +43,7 @@ export interface Price {
   product?: Stripe.Product;
 }
 
-export interface ProductWithPrices {
+export interface ProductWithPrices extends Product {
   prices?: Price[];
 }
 
