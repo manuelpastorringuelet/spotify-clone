@@ -40,10 +40,10 @@ export interface Price {
   interval_count?: number;
   trial_period_days?: number | null;
   metadata?: Stripe.Metadata;
-  product?: Stripe.Product;
+  products?: Product;
 }
 
-export interface ProductWithPrices extends Product {
+export interface ProductWithPrice extends Product {
   prices?: Price[];
 }
 
@@ -56,10 +56,11 @@ export interface Subscription {
   quantity?: number;
   cancel_at_period_end?: boolean;
   created: string;
+  current_period_start: string;
   current_period_end: string;
   ended_at?: string;
-  canceled_at?: string;
   cancel_at?: string;
+  canceled_at?: string;
   trial_start?: string;
   trial_end?: string;
   prices?: Price;

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-import { ProductWithPrices, Price } from "@/types";
+import { ProductWithPrice, Price } from "@/types";
 import { useUser } from "@/hooks/useUser";
 import { postData } from "@/libs/helpers";
 import { getStripe } from "@/libs/stripeClient";
@@ -12,13 +12,13 @@ import Modal from "./Modal";
 import Button from "./Button";
 
 interface SubscribeModalProps {
-  products: ProductWithPrices[];
+  products: ProductWithPrice[];
 }
 
 const formatPrice = (price: Price) => {
   const priceString = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: price.currency || "EUR",
+    currency: price.currency,
     minimumFractionDigits: 0,
   }).format((price?.unit_amount || 0) / 100);
 
