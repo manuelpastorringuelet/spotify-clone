@@ -3,7 +3,7 @@ export type Json =
   | number
   | boolean
   | null
-  | { [key: string]: Json }
+  | { [key: string]: Json | undefined }
   | Json[];
 
 export interface Database {
@@ -22,6 +22,14 @@ export interface Database {
           id?: string;
           stripe_customer_id?: string | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: "customers_id_fkey";
+            columns: ["id"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       liked_songs: {
         Row: {
@@ -39,6 +47,20 @@ export interface Database {
           song_id?: number;
           user_id?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "liked_songs_song_id_fkey";
+            columns: ["song_id"];
+            referencedRelation: "songs";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "liked_songs_user_id_fkey";
+            columns: ["user_id"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       prices: {
         Row: {
@@ -84,6 +106,14 @@ export interface Database {
           type?: Database["public"]["Enums"]["pricing_type"] | null;
           unit_amount?: number | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: "prices_product_id_fkey";
+            columns: ["product_id"];
+            referencedRelation: "products";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       products: {
         Row: {
@@ -110,6 +140,7 @@ export interface Database {
           metadata?: Json | null;
           name?: string | null;
         };
+        Relationships: [];
       };
       songs: {
         Row: {
@@ -139,6 +170,14 @@ export interface Database {
           title?: string | null;
           user_id?: string | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: "songs_user_id_fkey";
+            columns: ["user_id"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       subscriptions: {
         Row: {
@@ -192,6 +231,20 @@ export interface Database {
           trial_start?: string | null;
           user_id?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "subscriptions_price_id_fkey";
+            columns: ["price_id"];
+            referencedRelation: "prices";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "subscriptions_user_id_fkey";
+            columns: ["user_id"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       users: {
         Row: {
@@ -215,6 +268,14 @@ export interface Database {
           id?: string;
           payment_method?: Json | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: "users_id_fkey";
+            columns: ["id"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
     };
     Views: {
