@@ -28,9 +28,9 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
       authModal.onOpen();
     }
 
-    if (!subscription) {
-      return subscribeModal.onOpen();
-    }
+    // if (!subscription) {
+    //   return subscribeModal.onOpen();
+    // }
 
     return uploadModal.onOpen();
   };
